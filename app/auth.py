@@ -6,7 +6,7 @@ from app.models import User
 def server():
     return "Server is running!"
 
-@app.post('/register')
+@app.post('/signup')
 def register():
     content_type = request.headers.get('Content-Type')
     if (content_type == 'application/json'):
@@ -72,31 +72,6 @@ def login():
                     status=401,
                     mimetype='application/json'
                 )
-        
-@app.get('/dashboard')
-def dashboard():
-    try:
-        if session['email']:
-            user = User.query.filter_by(email=session['email']).first()
-            
-            response = {
-                    'id' : user.id,
-                    'username' : user.username,
-                    'email' : user.email,
-                }
-            
-            return Response (
-                        f"{response}",
-                        status=200,
-                        mimetype='application/json'
-                    )
-    except Exception as ex:
-        return Response (
-                    "{'message' : 'Please login first!'}",
-                    status=200,
-                    mimetype='application/json'
-                )
-
 
 @app.get('/logout')
 def logout():
