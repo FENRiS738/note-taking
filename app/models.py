@@ -26,3 +26,15 @@ class Note(db.Model):
         self.title = title
         self.content = content
         self.user_id = user_id
+
+
+class SharedNote(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    serder_id = db.Column(db.Integer, nullable=False)
+    reciever_id = db.Column(db.Integer, nullable=False)
+    note_id = db.Column(db.Integer, nullable=False)
+
+    def __init__(self, sender_id, reciever_id, note_id):
+        self.serder_id = sender_id
+        self.reciever_id = reciever_id
+        self.note_id = note_id

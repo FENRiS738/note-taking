@@ -9,3 +9,4 @@ db = SQLAlchemy(app)
 
 from app import auth
 from app import notes
+from app import share
