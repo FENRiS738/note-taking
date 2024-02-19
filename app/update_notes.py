@@ -24,9 +24,17 @@ def update_note(id):
             db.session.commit()
             return 'Note updated successfully!'
         else:
-            return 'Note not found!'
+            return Response(
+            "{'message' : 'Note not found'}",
+            status=200,
+            mimetype='application/json'
+        )
     else:
-        return 'Please login first!'
+        return Response(
+            "{'message' : 'Please login first!'}",
+            status=401,
+            mimetype='application/json'
+        )
 
 # GET all the changes associated with the note 
 @app.get('/notes/version_history/<int:id>')
@@ -59,4 +67,8 @@ def note_version_history(id):
                 mimetype='application/json'
             )
     else:
-        return 'Please login first!'
+        return Response(
+            "{'message' : 'Please login first!'}",
+            status=401,
+            mimetype='application/json'
+        )

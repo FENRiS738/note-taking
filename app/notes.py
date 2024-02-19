@@ -17,7 +17,11 @@ def get_all_notes():
             mimetype='application/json'
         )
     else:
-        return 'Please login first!'
+        return Response(
+            "{'message' : 'Please login first!'}",
+            status=401,
+            mimetype='application/json'
+        )
     
 # Create a new note
 @app.post('/notes/create')
@@ -40,7 +44,11 @@ def create_note():
                 mimetype='application/json'
             )
     else:
-        return 'Please login first!'
+        return Response(
+            "{'message' : 'Please login first!'}",
+            status=401,
+            mimetype='application/json'
+        )
 
 
 # Retrieve a specific note by its ID
@@ -58,4 +66,8 @@ def get_note_by_id(id):
             mimetype='application/json'
         )
     else:
-        return 'Please login first!'
+        return Response(
+            "{'message' : 'Please login first!'}",
+            status=401,
+            mimetype='application/json'
+        )

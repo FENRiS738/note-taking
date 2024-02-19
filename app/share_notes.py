@@ -26,4 +26,8 @@ def share_note():
                 mimetype='application/json'
             )
     else:
-        return 'Please login first!'
+        return Response(
+            "{'message' : 'Please login first!'}",
+            status=401,
+            mimetype='application/json'
+        )
