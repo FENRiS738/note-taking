@@ -1,8 +1,9 @@
 from flask import request, Response, session
 from app.models import SharedNote, User
 from app import app, db
-from app.ulits import is_logged_in
+from app.utils import is_logged_in
 
+# Share the note with other users
 @app.post('/notes/share')
 def share_note():
     if is_logged_in():

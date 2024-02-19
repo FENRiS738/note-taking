@@ -6,6 +6,7 @@ from app.models import User
 def server():
     return "Server is running!"
 
+# Create a single user sign up
 @app.post('/signup')
 def register():
     content_type = request.headers.get('Content-Type')
@@ -36,6 +37,7 @@ def register():
             mimetype='application/json'
         )
 
+# Create a simple login
 @app.post('/login')
 def login():
     content_type = request.headers.get('Content-Type')
